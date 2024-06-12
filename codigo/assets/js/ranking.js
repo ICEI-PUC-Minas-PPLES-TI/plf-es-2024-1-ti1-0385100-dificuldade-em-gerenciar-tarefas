@@ -13,5 +13,4 @@ for (let index = 0; index < friends.length; index++) {
     friends[index].appendChild(level)
     friends[index].appendChild(pontos)
 
-    
 }
