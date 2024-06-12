@@ -1,0 +1,17 @@
+{
+    "tasks": [
+    {
+        "name": "Comer macarrao",
+        "status": "active",
+        "endDate": "2024-06-29",
+        "friends": ["Amigo 1", "Amigo 2"]
+    },
+    {
+        "name": "Preparar o macarrao",
+        "status": "active",
+        "endDate": "2024-06-29",
+        "friends": ["Amigo 1", "Amigo 2"]
+    }
+
+]
+}
