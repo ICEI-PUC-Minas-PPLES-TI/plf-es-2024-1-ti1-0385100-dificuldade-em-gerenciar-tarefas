@@ -1,0 +1,92 @@
+html {
+  height: 100%;
+  width: 100%;
+}
+
+header {
+  background-color: #008DDA;
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  color: white;
+  padding: 1rem;
+  display: flex;
+}
+
+header p {
+  display: grid;
+  margin-top: auto;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.img_folinha {
+  width: 40px;
+  height: 40px;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
+
+.container {
+  display: flex;
+  height: 100vh; /* Altura total da viewport */
+}
+
+.quadrado-azul-claro {
+  background-color: #ADD8E6; /* Cor azul claro */
+  flex-basis: 70%; /* Ocupa 70% da largura do container */
+  position: relative; /* Para posicionamento absoluto dos elementos internos */
+}
+
+.retangulo-azul-escuro {
+  background-color: #008DDA; /* Cor azul escuro */
+  position: absolute;
+  right: 370px; /* Ajuste conforme necessário para o efeito de sobreposição */
+  top: 60%;
+  transform: translateY(-50%);
+  width: calc(30% + 150px); /* Largura do retângulo escuro mais a quantidade de sobreposição */
+  height: calc(100% - (2 * (10vh))); /* Altura menos as margens verticais de cima e de baixo */
+  padding: 20px;
+  overflow-y: auto; /* Para permitir rolagem se a lista for muito longa */
+}
+
+.amigo {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.amigo img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%; /* Para tornar a imagem circular */
+  margin-right: 10px;
+}
+
+.amigos-png {
+  width: 70px;
+  height: 70px;
+  position: absolute;
+  right: 530px;
+  top: 5%;
+}
+
+/* Consulta de mídia para dispositivos com largura de tela até 600px */
+@media (max-width: 600px) {
+  .quadrado-azul-claro {
+    flex-basis: 100%; /* Ocupa 100% da largura do container */
+  }
+
+  .retangulo-azul-escuro {
+    position: static; /* Posicionamento estático para empilhar os elementos */
+    width: 100%; /* Largura de 100% */
+    height: auto; /* Altura automática */
+  }
+
+  .amigos-png {
+    position: static; /* Posicionamento estático para empilhar os elementos */
+    width: 50px; /* Largura reduzida */
+    height: 50px; /* Altura reduzida */
+  }
+}
