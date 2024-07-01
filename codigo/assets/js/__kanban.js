@@ -3,7 +3,8 @@ document.addEventListener('DOMContentLoaded', (event) => {
     const projectNameInput = document.getElementById('project-name');
     const projectStatusSelect = document.getElementById('project-status');
     const projectEndDateInput = document.getElementById('project-end-date');
-    const projects = JSON.parse(localStorage.getItem('kanban-projects')) || [];
+    const projects = JSON.parse(localStorage.getItem('kanban-projects'));
+    if(projects)
 
     
 
@@ -18,12 +19,13 @@ document.addEventListener('DOMContentLoaded', (event) => {
             return;
         }
 
-        projects.push({ name, status, endDate, friends: [] });
+        projects.tasks.push({ name, status, endDate, friends: [] });
         localStorage.setItem('kanban-projects', JSON.stringify(projects));
 
         projectNameInput.value = '';
         projectStatusSelect.value = 'pending';
         projectEndDateInput.value = '';
+        console.log(projects)
 
         
     });
