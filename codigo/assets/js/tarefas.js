@@ -1,11 +1,4 @@
-import database from '../../../database.json' with {type: 'json'}
-let data = localStorage.getItem("data")
-if(data == null || data == undefined) {
-    localStorage.setItem("data", JSON.stringify(database))
-} else {
-    JSON.parse(data)
-}
-if(data){
+
 //A partir daqui começamos: 
 
 
@@ -40,7 +33,7 @@ tarefas.map((tarefa) => {
     container.appendChild(task)
 
 })
-}
+
 
 
 

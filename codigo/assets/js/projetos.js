@@ -1,37 +1,26 @@
-let projects = getProjectsFromLocalStorage();
-const predefinedTasks = ['Tarefa 1', 'Tarefa 2', 'Tarefa 3', 'Tarefa 4', 'Tarefa 5'];
+let data = JSON.parse(localStorage.getItem('data'));
+let projects = data.users[0].projetos
 
-function getProjectsFromLocalStorage() {
-    return JSON.parse(localStorage.getItem('projects')) || [];
-}
+
 
 function saveProjectsToLocalStorage() {
-    localStorage.setItem('projects', JSON.stringify(projects));
+    
+    localStorage.setItem('data', JSON.stringify(data));
+
 }
 
 function createProjectListItem(project, index) {
     const listItem = document.createElement('li');
 
     const projectText = document.createElement('h2');
-    projectText.textContent = project.name;
+    projectText.textContent = project.titulo;
     listItem.appendChild(projectText);
 
-    listItem.appendChild(createTaskList(project.tasks));
     const deleteButton = createDeleteButton(index);
     listItem.appendChild(deleteButton);
     listItem.appendChild(createEditButton(project, index, projectText, listItem, deleteButton));
 
     return listItem;
-}
-
-function createTaskList(tasks) {
-    const taskList = document.createElement('ul');
-    tasks.forEach(task => {
-        const taskItem = document.createElement('li');
-        taskItem.textContent = task;
-        taskList.appendChild(taskItem);
-    });
-    return taskList;
 }
 
 function createDeleteButton(index) {
@@ -54,7 +43,7 @@ function createEditButton(project, index, projectText, listItem, deleteButton) {
         listItem.replaceChild(createEditInput(project), projectText);
         listItem.removeChild(editButton);
         deleteButton.style.display = 'none'; // Esconde o botão de deletar
-        listItem.appendChild(createEditTasksContainer(project, index, deleteButton));
+        listItem.appendChild(createSaveButton(index, deleteButton));
     });
     return editButton;
 }
@@ -67,42 +56,6 @@ function createEditInput(project) {
     return editInput;
 }
 
-function createEditTasksContainer(project, index, deleteButton) {
-    const editTasksContainer = document.createElement('div');
-    project.tasks.forEach(task => {
-        editTasksContainer.appendChild(createTaskCheckbox(task, true));
-    });
-
-    predefinedTasks.forEach(task => {
-        if (!project.tasks.includes(task)) {
-            editTasksContainer.appendChild(createTaskCheckbox(task, false));
-        }
-    });
-
-    editTasksContainer.appendChild(createSaveButton(index, deleteButton));
-    return editTasksContainer;
-}
-
-function createTaskCheckbox(task, isChecked) {
-    const checkbox = document.createElement('input');
-    checkbox.type = 'checkbox';
-    checkbox.id = task;
-    checkbox.value = task;
-    checkbox.checked = isChecked;
-    checkbox.className = 'task-checkbox';
-
-    const label = document.createElement('label');
-    label.htmlFor = task;
-    label.appendChild(document.createTextNode(task));
-
-    const container = document.createElement('div');
-    container.appendChild(checkbox);
-    container.appendChild(label);
-    container.appendChild(document.createElement('br'));  // quebra de linha para layout
-
-    return container;
-}
-
 function createSaveButton(index, deleteButton) {
     const saveButton = document.createElement('button');
     saveButton.textContent = 'Salvar';
@@ -111,16 +64,6 @@ function createSaveButton(index, deleteButton) {
         const editInput = document.querySelector('.edit-input');
         if (editInput.value.trim() !== '') {
             projects[index].name = editInput.value;
-
-            // Atualiza as tarefas
-            projects[index].tasks = [];
-            predefinedTasks.forEach(task => {
-                const checkbox = document.getElementById(task);
-                if (checkbox.checked) {
-                    projects[index].tasks.push(task);
-                }
-            });
-
             saveProjectsToLocalStorage();
             renderProjects();
         } else {
@@ -144,39 +87,14 @@ document.getElementById('new-project-button').addEventListener('click', function
     const projectName = document.getElementById('new-project-input').value;
     if (projectName) {
         const newProject = {
-            name: projectName,
-            tasks: []
+            titulo: projectName,
+            tarefas: []
         };
 
-        const tasksContainer = document.getElementById('predefined-tasks');
-        tasksContainer.innerHTML = '';  // limpa quaisquer checkboxes existentes
-
-        predefinedTasks.forEach(task => {
-            tasksContainer.appendChild(createTaskCheckbox(task, false));
-        });
-
-        // Adiciona um botão para confirmar a seleção de tarefas
-        const confirmButton = document.createElement('button');
-        confirmButton.textContent = 'Confirmar';
-        confirmButton.className = 'confirm-button';
-        confirmButton.addEventListener('click', function() {
-            predefinedTasks.forEach(task => {
-                const checkbox = document.getElementById(task);
-                if (checkbox.checked) {
-                    newProject.tasks.push(task);
-                }
-            });
-
-            projects.push(newProject);
-            document.getElementById('new-project-input').value = '';
-            saveProjectsToLocalStorage();
-            renderProjects();
-
-            // Limpa as tarefas e o botão de confirmação
-            tasksContainer.innerHTML = '';
-        });
-
-        tasksContainer.appendChild(confirmButton);
+        data.users[0].projetos.push(newProject);
+        document.getElementById('new-project-input').value = '';
+        saveProjectsToLocalStorage();
+        renderProjects();
     }
 });
 

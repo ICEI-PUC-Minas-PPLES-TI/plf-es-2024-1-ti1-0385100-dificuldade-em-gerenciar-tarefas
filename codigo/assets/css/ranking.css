@@ -12,4 +12,33 @@
 
 }
 
+nav {
+    height: 6rem;
+    width: 100%;
+    padding: 1rem;
+    background-color:#008DDA;
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+    
+
+}
+.nav-container {
+    
+    display: flex;
+    gap: 4rem;
+    
+}
+#logo{
+    width: 6rem;
+    height: 5rem;
+}
+#perfil {
+    margin-left: auto;
+    width: 6rem;
+    height: 6rem;
+}
+
+
+
 
