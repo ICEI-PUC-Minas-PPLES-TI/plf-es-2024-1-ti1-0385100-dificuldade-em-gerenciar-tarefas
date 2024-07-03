@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 cff-version: 1.0.1
 message: Please cite this software using these metadata.
 title: Dificuldade em Organizar Rotinas
@@ -15,11 +14,11 @@ authors:
     given-names: Eduardo
   - family-names: Angonesi Mendes
     given-names: Arthur
-  - name-suffix: 
+  - name-suffix: Professor
     affiliation: PUC Minas
     family-names: Vieira Carneiro
     given-names: Rommel
-  - name-suffix: 
+  - name-suffix: Professor
     affiliation: PUC Minas
     family-names: Alves Nogueira
     given-names: Simone
@@ -30,4 +29,3 @@ repository-code: https://github.com/ICEI-PUC-Minas-PPLES-TI/plf-es-2024-1-ti1-03
 license: CC-BY-4.0
 version: 1.0.0
 date-released: 2022-07-14
-=======
