@@ -7,25 +7,25 @@ authors:
     given-names: Bernardo
   - family-names: Gouvea De La Camp
     given-names: Henrique
-  - family-names: 
-    given-names: 
-  - family-names: 
-    given-names: 
-  - family-names: 
-    given-names: 
-  - family-names: 
-    given-names:
-  - name-suffix: Rommel Vieira Carneiro
+  - family-names: Drumond Barbosa Soares  
+    given-names: Arthur
+  - family-names: Henrique Oliveira Silva 
+    given-names: Igor
+  - family-names: Bicalho Martins Pereira
+    given-names: Eduardo
+  - family-names: Angonesi Mendes
+    given-names: Arthur
+  - name-suffix: 
     affiliation: PUC Minas
-    family-names: 
-    given-names: 
-  - name-suffix: Simone Alves Nogueira
+    family-names: Vieira Carneiro
+    given-names: Rommel
+  - name-suffix: 
     affiliation: PUC Minas
-    family-names: 
-    given-names: 
+    family-names: Alves Nogueira
+    given-names: Simone
 keywords:
-  - 
-  - 
+  - Procrastination
+  - Online Schedule
 repository-code: https://github.com/ICEI-PUC-Minas-PPLES-TI/plf-es-2024-1-ti1-0385100-dificuldade-em-gerenciar-tarefas
 license: CC-BY-4.0
 version: 1.0.0
